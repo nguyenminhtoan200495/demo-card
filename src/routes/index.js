@@ -1,12 +1,14 @@
-import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import history from "../utils/history";
-import Header from "../components/Header";
 import LayoutComponent from "../components/Layout";
-import PrivateRoute from "../components/PrivateRoute";
-const Home = lazy(() => import("./Home"));
-const About = lazy(() => import("./About"));
-const Login = lazy(() => import("./Login"));
+// import React, { Suspense, lazy } from "react";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Header from "../components/Header";
+// import PrivateRoute from "../components/PrivateRoute";
+// const Home = lazy(() => import("./Home"));
+// const About = lazy(() => import("./About"));
+// const Login = lazy(() => import("./Login"));
 
 const AppRouter = () => {
   return (

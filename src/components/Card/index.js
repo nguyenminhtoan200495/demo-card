@@ -24,137 +24,34 @@ const CardComponent = (props) => {
   let memberIcon = null;
   let folder = null;
   let folderInfo = null;
-  if (props.product.type === "product") {
-    product = (
-      <Row justify="end" align="bottom" style={{ minHeight: "32px" }}>
-        <Col style={{ padding: "3px" }}>
-          <CodeSandboxOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-          <DatabaseOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-          <SyncOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-        </Col>
-      </Row>
-    );
-    const { code, market, day, energy, pack } = props.product;
-    productInfo = (
-      <div
-        style={{
-          overflow: "hidden",
-          paddingTop: "20px",
-        }}
-      >
+  switch (props.product.type) {
+    case "product":
+      product = (
+        <Row justify="end" align="bottom" style={{ minHeight: "32px" }}>
+          <Col style={{ padding: "3px" }}>
+            <CodeSandboxOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+            <DatabaseOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+            <SyncOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+          </Col>
+        </Row>
+      );
+      const { code, market, day, energy, pack } = props.product;
+      productInfo = (
         <div
           style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
+            overflow: "hidden",
+            paddingTop: "20px",
           }}
         >
-          {code}
-        </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {market}
-        </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {day}
-        </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {energy}
-        </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {pack}
-        </div>
-      </div>
-    );
-  } else if (props.product.type === "member") {
-    memberIcon = (
-      <>
-        <UserOutlined
-          style={{
-            fontSize: "22px",
-            marginRight: "4px",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => onClick1(props.product)}
-        />
-        <FileImageOutlined
-          style={{
-            fontSize: "22px",
-            marginRight: "4px",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => onClick1(props.product)}
-        />
-        <CommentOutlined
-          style={{
-            fontSize: "22px",
-            marginRight: "4px",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => onClick1(props.product)}
-        />
-      </>
-    );
-    const { name, address } = props.product;
-    memberInfo = (
-      <div style={{ paddingTop: "20px" }}>
-        <div>{name}</div>
-        <div>{address}</div>
-      </div>
-    );
-    memberBody = (
-      <Row justify="space-between" align="middle">
-        <Col style={{ padding: "3px 3px 3px 20px" }}>
-          <CodepenOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-          <DatabaseOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-          <InboxOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-          <QrcodeOutlined
-            style={{ fontSize: "22px", marginRight: "2px" }}
-            onClick={() => onClick1(props.product)}
-          />
-        </Col>
-        <Col style={{ paddingRight: "10px" }}>
           <div
             style={{
               overflow: "hiden",
@@ -162,7 +59,7 @@ const CardComponent = (props) => {
               textOverflow: "ellipsis",
             }}
           >
-            Thomas Hanks
+            {code}
           </div>
           <div
             style={{
@@ -171,99 +68,208 @@ const CardComponent = (props) => {
               textOverflow: "ellipsis",
             }}
           >
-            thanks@company.com
+            {market}
           </div>
-        </Col>
-      </Row>
-    );
-  } else if (props.product.type === "folder") {
-    folder = (
-      <>
-        <PictureOutlined
-          style={{
-            fontSize: "22px",
-            marginRight: "4px",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => onClick1(props.product)}
-        />
-        <PaperClipOutlined
-          style={{
-            fontSize: "22px",
-            marginRight: "4px",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => onClick1(props.product)}
-        />
-        <DownloadOutlined
-          style={{
-            fontSize: "22px",
-            marginRight: "4px",
-            backgroundColor: "#fff",
-          }}
-          onClick={() => onClick1(props.product)}
-        />
-      </>
-    );
-    folderInfo = (
-      <div style={{ overflow: "hidden", paddingTop: "25px" }}>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          Everything I Want To Download
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {day}
+          </div>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {energy}
+          </div>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {pack}
+          </div>
         </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          365MB
+      );
+      break;
+    case "member":
+      memberIcon = (
+        <>
+          <UserOutlined
+            style={{
+              fontSize: "22px",
+              marginRight: "4px",
+              backgroundColor: "#fff",
+            }}
+            onClick={() => onClick1(props.product)}
+          />
+          <FileImageOutlined
+            style={{
+              fontSize: "22px",
+              marginRight: "4px",
+              backgroundColor: "#fff",
+            }}
+            onClick={() => onClick1(props.product)}
+          />
+          <CommentOutlined
+            style={{
+              fontSize: "22px",
+              marginRight: "4px",
+              backgroundColor: "#fff",
+            }}
+            onClick={() => onClick1(props.product)}
+          />
+        </>
+      );
+      const { name, address } = props.product;
+      memberInfo = (
+        <div style={{ paddingTop: "20px" }}>
+          <div>{name}</div>
+          <div>{address}</div>
         </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          22 Products
+      );
+      memberBody = (
+        <Row justify="space-between" align="middle">
+          <Col style={{ padding: "3px 3px 3px 20px" }}>
+            <CodepenOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+            <DatabaseOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+            <InboxOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+            <QrcodeOutlined
+              style={{ fontSize: "22px", marginRight: "2px" }}
+              onClick={() => onClick1(props.product)}
+            />
+          </Col>
+          <Col style={{ paddingRight: "10px" }}>
+            <div
+              style={{
+                overflow: "hiden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+              }}
+            >
+              Thomas Hanks
+            </div>
+            <div
+              style={{
+                overflow: "hiden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+              }}
+            >
+              thanks@company.com
+            </div>
+          </Col>
+        </Row>
+      );
+      break;
+    case "folder":
+      folder = (
+        <>
+          <PictureOutlined
+            style={{
+              fontSize: "22px",
+              marginRight: "4px",
+              backgroundColor: "#fff",
+            }}
+            onClick={() => onClick1(props.product)}
+          />
+          <PaperClipOutlined
+            style={{
+              fontSize: "22px",
+              marginRight: "4px",
+              backgroundColor: "#fff",
+            }}
+            onClick={() => onClick1(props.product)}
+          />
+          <DownloadOutlined
+            style={{
+              fontSize: "22px",
+              marginRight: "4px",
+              backgroundColor: "#fff",
+            }}
+            onClick={() => onClick1(props.product)}
+          />
+        </>
+      );
+      folderInfo = (
+        <div style={{ overflow: "hidden", paddingTop: "25px" }}>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            Everything I Want To Download
+          </div>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            365MB
+          </div>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            22 Products
+          </div>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            451 Images
+          </div>
+          <br />
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            David Parker
+          </div>
+          <div
+            style={{
+              overflow: "hiden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            3Cows Metats
+          </div>
         </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          451 Images
-        </div>
-        <br />
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          David Parker
-        </div>
-        <div
-          style={{
-            overflow: "hiden",
-            whiteSpace: "nowrap",
-            textOverflow: "ellipsis",
-          }}
-        >
-          3Cows Metats
-        </div>
-      </div>
-    );
+      );
+      break;
+    default:
+      break;
   }
 
   const onClick1 = (values) => {
